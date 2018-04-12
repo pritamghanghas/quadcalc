@@ -84,7 +84,6 @@ ApplicationWindow {
             }
 
 
-
             Label {
                 id: battery
                 text: "li-ion battery to use"
@@ -101,6 +100,7 @@ ApplicationWindow {
                     ListElement { text: "NCR20700A"; capacity: 3300; capacity_det_at_max: 0.15; max_current: 30; weight: 65  }
                     ListElement { text: "SAMSUNG48G"; capacity: 4800; capacity_det_at_max: 0.15; max_current: 10; weight: 70 } // their max is 10 but cycles are reduced to about 200 at that, 500 at 5A taking middle ground
                     ListElement { text: "SAMSUNG40T"; capacity: 3900; capacity_det_at_max: 0.15; max_current: 30; weight: 70 }
+                    ListElement { text: "SAMSUNG30T"; capacity: 3000; capacity_det_at_max: 0.15; max_current: 35; weight: 70 }
                     // one can add more battery configs here
                 }
                 textRole: "text"
@@ -185,6 +185,16 @@ ApplicationWindow {
             }
 
             Label {
+                id: battweight
+                text: "Battery weight(gm): "
+            }
+
+            Label {
+                id: battweight1
+                text: " "
+            }
+
+            Label {
                 id: auw
                 text: "All up weight (gm): "
             }
@@ -240,6 +250,8 @@ ApplicationWindow {
                     var flightTime=batAH*60/hoverCurrentBat
 
                     hovertime1.text = Math.round(flightTime) + "minutes"
+
+                    battweight1.text = batteryWeightActual
 
                     auw1.text = parseInt(quadWieghtInput.text) + batteryWeightActual
                 }
