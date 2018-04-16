@@ -39,7 +39,7 @@ ApplicationWindow {
             TextField {
                 id: quadWieghtInput
                 text: "0"
-                validator: IntValidator { bottom: 100; top: 10000 }
+                validator: IntValidator { bottom: 100; top: 20000 }
                 focus: true
                 cursorVisible: true
             }
@@ -74,10 +74,13 @@ ApplicationWindow {
                 width: 300
                 model: ListModel {
                     id: motorModel
-                    ListElement { text: "3s sunnysky a2212-1 60%T"; weight: 50; efficiency: 6.5; thrust: 400; cells: 3 }
-                    ListElement { text: "4s sunnysky V2806 50%T"; weight: 58; efficiency: 9.5; thrust: 400; cells: 4 }
-                    ListElement { text: "3s sunnysky V2806 60%T"; weight: 58; efficiency: 10; thrust: 400; cells: 3 }
-                    ListElement { text: "4s TMotor MN4008 50%T"; weight: 100; efficiency: 13; thrust: 600; cells: 4 }
+                    ListElement { text: "3s sunnysky a2212-1 60%T 10' "; weight: 50; efficiency: 6.5; thrust: 400; cells: 3 }
+                    ListElement { text: "4s sunnysky V2806 50%T 11'"; weight: 58; efficiency: 9.5; thrust: 400; cells: 4 }
+                    ListElement { text: "3s sunnysky V2806 60%T 11'" ; weight: 58; efficiency: 10; thrust: 400; cells: 3 }
+                    ListElement { text: "4s TMotor MN4008 50%T 15'"; weight: 100; efficiency: 13; thrust: 600; cells: 4 }
+                    ListElement { text: "6s TMotor P80_340 50%T 22'"; weight: 400; efficiency: 8.0; thrust: 2800; cells: 6 }
+                    ListElement { text: "12s TMotor P80_100 50%T 28'"; weight: 650; efficiency: 11; thrust: 3200; cells: 12 }
+
                     // one can add more motor configs here
                 }
                 textRole: "text"
@@ -204,6 +207,16 @@ ApplicationWindow {
                 text: " "
             }
 
+            Label {
+                id: thrAt50
+                text: "Thrust available (gm): "
+            }
+
+            Label {
+                id: thrAt501
+                text: " "
+            }
+
 
 
             Button {
@@ -254,6 +267,8 @@ ApplicationWindow {
                     battweight1.text = batteryWeightActual
 
                     auw1.text = parseInt(quadWieghtInput.text) + batteryWeightActual
+
+                    thrAt501.text = thrustAvailable
                 }
             }
 
