@@ -75,6 +75,7 @@ ApplicationWindow {
                 model: ListModel {
                     id: motorModel
                     ListElement { text: "3s sunnysky a2212-1 60%T 10' "; weight: 50; efficiency: 6.5; thrust: 400; cells: 3 }
+                    ListElement { text: "3s sunnysky a2212-1 50%T 10' "; weight: 50; efficiency: 7; thrust: 350; cells: 3 }
                     ListElement { text: "4s sunnysky V2806 50%T 11'"; weight: 58; efficiency: 9.5; thrust: 400; cells: 4 }
                     ListElement { text: "3s sunnysky V2806 60%T 11'" ; weight: 58; efficiency: 10; thrust: 400; cells: 3 }
                     ListElement { text: "4s TMotor MN4008 50%T 15'"; weight: 100; efficiency: 13; thrust: 600; cells: 4 }
@@ -97,13 +98,16 @@ ApplicationWindow {
                 model: ListModel {
                     id: batteryModel
                     // capacity_det_at_max is percentage loss factor when we draw current at max
-                    ListElement { text: "NCR18650B"; capacity: 3400; capacity_det_at_max: 0.15; max_current: 6; weight: 55 } //weight is inlcuding overhead of pack making
-                    ListElement { text: "NCR18650GA"; capacity: 2800; capacity_det_at_max: 0.15; max_current: 10; weight: 55 }
-                    ListElement { text: "NCR20700B"; capacity: 4250; capacity_det_at_max: 0.15; max_current: 15; weight: 65 }
-                    ListElement { text: "NCR20700A"; capacity: 3300; capacity_det_at_max: 0.15; max_current: 30; weight: 65  }
-                    ListElement { text: "SAMSUNG48G"; capacity: 4800; capacity_det_at_max: 0.15; max_current: 10; weight: 70 } // their max is 10 but cycles are reduced to about 200 at that, 500 at 5A taking middle ground
-                    ListElement { text: "SAMSUNG40T"; capacity: 3900; capacity_det_at_max: 0.15; max_current: 30; weight: 70 }
-                    ListElement { text: "SAMSUNG30T"; capacity: 3000; capacity_det_at_max: 0.15; max_current: 35; weight: 70 }
+                    ListElement { text: "NCR18650B"; capacity: 3400; capacity_det_at_max: 0.15; max_current: 6; weight: 55; cost: 6 } //weight is inlcuding overhead of pack making, international
+                    ListElement { text: "NCR18650GA"; capacity: 2800; capacity_det_at_max: 0.15; max_current: 10; weight: 55; cost: 8 }
+                    ListElement { text: "NCR20700B"; capacity: 4250; capacity_det_at_max: 0.15; max_current: 15; weight: 65; cost: 10 }
+                    ListElement { text: "NCR20700A"; capacity: 3300; capacity_det_at_max: 0.15; max_current: 30; weight: 65; cost: 11  }
+                    ListElement { text: "SAMSUNG48G"; capacity: 4800; capacity_det_at_max: 0.15; max_current: 10; weight: 70 ; cost: 9 } // their max is 10 but cycles are reduced to about 200 at that, 500 at 5A taking middle ground
+                    ListElement { text: "SAMSUNG40T"; capacity: 3900; capacity_det_at_max: 0.15; max_current: 30; weight: 70; cost: 9 }
+                    ListElement { text: "SAMSUNG30T"; capacity: 3000; capacity_det_at_max: 0.15; max_current: 35; weight: 70; cost: 9 }
+                    ListElement { text: "SAMSUNG25R"; capacity: 2600; capacity_det_at_max: 0.15; max_current: 20; weight: 48; cost: 8 }
+                    ListElement { text: "LG HG2";     capacity: 2900; capacity_det_at_max: 0.15; max_current: 20; weight: 52; cost: 9 }
+                    ListElement { text: "IJOY 2170 40A"; capacity: 3600; capacity_det_at_max: 0.15; max_current: 24; weight: 70; cost: 12}
                     // one can add more battery configs here
                 }
                 textRole: "text"
@@ -198,6 +202,16 @@ ApplicationWindow {
             }
 
             Label {
+                id: battcost
+                text: "Battery Cost Intl($): "
+            }
+
+            Label {
+                id: battcost1
+                text: " "
+            }
+
+            Label {
                 id: auw
                 text: "All up weight (gm): "
             }
@@ -237,6 +251,7 @@ ApplicationWindow {
                     }
 
                     var batteryWeightActual = Math.round(currentBattery.weight*currentMotor.cells*batteryconfiguration)
+                    var batteryCostActual = Math.round(currentBattery.cost*currentMotor.cells*batteryconfiguration)
 
                     var availableCurrentBat = batteryconfiguration*currentBattery.max_current
                     var batAH = batteryconfiguration*currentBattery.capacity*(1-(currentBattery.capacity_det_at_max + battery_practical_capacity_factor))/1000;
@@ -265,6 +280,7 @@ ApplicationWindow {
                     hovertime1.text = Math.round(flightTime) + "minutes"
 
                     battweight1.text = batteryWeightActual
+                    battcost1.text = batteryCostActual
 
                     auw1.text = parseInt(quadWieghtInput.text) + batteryWeightActual
 
