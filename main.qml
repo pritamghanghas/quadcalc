@@ -107,6 +107,8 @@ ApplicationWindow {
                     ListElement { text: "SAMSUNG30T"; capacity: 3000; capacity_det_at_max: 0.15; max_current: 35; weight: 70; cost: 9 }
                     ListElement { text: "SAMSUNG25R"; capacity: 2600; capacity_det_at_max: 0.15; max_current: 20; weight: 48; cost: 8 }
                     ListElement { text: "LG HG2";     capacity: 2900; capacity_det_at_max: 0.15; max_current: 20; weight: 52; cost: 9 }
+                    ListElement { text: "LG MG1";     capacity: 2800; capacity_det_at_max: 0.15; max_current: 10; weight: 49; cost: 4 }
+                    ListElement { text: "LG M36";     capacity: 3300; capacity_det_at_max: 0.10; max_current: 10; weight: 55; cost: 6 }
                     ListElement { text: "IJOY 2170 40A"; capacity: 3600; capacity_det_at_max: 0.15; max_current: 24; weight: 70; cost: 12}
                     // one can add more battery configs here
                 }
@@ -121,7 +123,7 @@ ApplicationWindow {
             TextField {
                 id: cellParaLimit1
                 text: "20"
-                validator: IntValidator { bottom: 1; top: 20 }
+                validator: IntValidator { bottom: 1; top: 60 }
                 focus: true
                 cursorVisible: true
             }
