@@ -34,10 +34,22 @@ ApplicationWindow {
 
             Label {
                 id: quadWeight
-                text: 'Quad Weight without battery (gm): '
+                text: 'Quad Weight without battery and wihout motors (gm): '
             }
             TextField {
                 id: quadWieghtInput
+                text: "0"
+                validator: IntValidator { bottom: 100; top: 20000 }
+                focus: true
+                cursorVisible: true
+            }
+
+            Label {
+                id: payloadWeight
+                text: 'payload weight (gm): '
+            }
+            TextField {
+                id: payloadWeightInput
                 text: "0"
                 validator: IntValidator { bottom: 100; top: 20000 }
                 focus: true
@@ -81,6 +93,8 @@ ApplicationWindow {
                     ListElement { text: "4s TMotor MN4008 50%T 15'"; weight: 100; efficiency: 13; thrust: 600; cells: 4 }
                     ListElement { text: "6s TMotor P80_340 50%T 22'"; weight: 400; efficiency: 8.0; thrust: 2800; cells: 6 }
                     ListElement { text: "12s TMotor P80_100 50%T 28'"; weight: 650; efficiency: 11; thrust: 3200; cells: 12 }
+                    ListElement { text: "12s sunnysky X6215S 50%T 22"; weight: 350; efficiency: 7; thrust: 3800; cells: 12 }
+                    ListElement { text: "6s sunnysky X5212S 50%T 20"; weight: 260; efficiency: 9; thrust: 1800; cells: 6 }
 
                     // one can add more motor configs here
                 }
@@ -108,8 +122,8 @@ ApplicationWindow {
                     ListElement { text: "SAMSUNG25R"; capacity: 2600; capacity_det_at_max: 0.15; max_current: 20; weight: 48; cost: 8 }
                     ListElement { text: "LG HG2";     capacity: 2900; capacity_det_at_max: 0.15; max_current: 20; weight: 52; cost: 9 }
                     ListElement { text: "LG MG1";     capacity: 2800; capacity_det_at_max: 0.15; max_current: 10; weight: 49; cost: 4 }
-                    ListElement { text: "LG M36";     capacity: 3300; capacity_det_at_max: 0.10; max_current: 10; weight: 55; cost: 6 }
-                    ListElement { text: "IJOY 2170 40A"; capacity: 3600; capacity_det_at_max: 0.15; max_current: 24; weight: 70; cost: 12}
+                    ListElement { text: "LG M36";     capacity: 3300; capacity_det_at_max: 0.10; max_current: 10; weight: 55; cost: 8 }
+                    ListElement { text: "IJOY 2170 40A"; capacity: 3600; capacity_det_at_max: 0.15; max_current: 24; weight: 70; cost: 17}
                     // one can add more battery configs here
                 }
                 textRole: "text"
@@ -241,9 +255,10 @@ ApplicationWindow {
                     var currentMotor = motorModel.get(motorType.currentIndex)
                     var currentBattery = batteryModel.get(batteryType.currentIndex)
                     var currentFrame = frameModel.get(frameConfig.currentIndex)
+                    var quadWeightwithoutBattery = parseInt(quadWieghtInput.text) + parseInt(payloadWeightInput.text) + currentMotor.weight*currentFrame.motors
 
                     var thrustAvailable = currentMotor.thrust * currentFrame.motors * currentFrame.efficiencyFactor
-                    var batteryWeightAvailable = thrustAvailable - quadWieghtInput.text
+                    var batteryWeightAvailable = thrustAvailable - quadWeightwithoutBattery
                     var numberofBatteries = batteryWeightAvailable/currentBattery.weight
                     var batteryconfiguration = Math.round(numberofBatteries/currentMotor.cells)
 
@@ -284,7 +299,7 @@ ApplicationWindow {
                     battweight1.text = batteryWeightActual
                     battcost1.text = batteryCostActual
 
-                    auw1.text = parseInt(quadWieghtInput.text) + batteryWeightActual
+                    auw1.text = quadWeightwithoutBattery + batteryWeightActual
 
                     thrAt501.text = thrustAvailable
                 }
