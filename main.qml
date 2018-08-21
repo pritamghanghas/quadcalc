@@ -87,14 +87,31 @@ ApplicationWindow {
                 model: ListModel {
                     id: motorModel
                     ListElement { text: "3s sunnysky a2212-1 60%T 10' "; weight: 50; efficiency: 6.5; thrust: 400; cells: 3 }
-                    ListElement { text: "3s sunnysky a2212-1 50%T 10' "; weight: 50; efficiency: 7; thrust: 350; cells: 3 }
-                    ListElement { text: "4s sunnysky V2806 50%T 11'"; weight: 58; efficiency: 9.5; thrust: 400; cells: 4 }
-                    ListElement { text: "3s sunnysky V2806 60%T 11'" ; weight: 58; efficiency: 10; thrust: 400; cells: 3 }
-                    ListElement { text: "4s TMotor MN4008 50%T 15'"; weight: 100; efficiency: 13; thrust: 600; cells: 4 }
+                    ListElement { text: "3s sunnysky a2212-1 50%T 10' "; weight: 50; efficiency: 7.5; thrust: 350; cells: 3 }
+                    ListElement { text: "4s sunnysky V2806 50%T 11'"; weight: 58; efficiency: 8.5; thrust: 400; cells: 4 }
+                    ListElement { text: "4s sunnysky V2806 40%T 11-1255'"; weight: 58; efficiency: 9.5; thrust: 400; cells: 4 }
+                    ListElement { text: "6s sunnysky V2806_400 45%T 11-1255'"; weight: 58; efficiency: 9.5; thrust: 400; cells: 6 }
+                    ListElement { text: "3s sunnysky V2806 60%T 11'" ; weight: 58; efficiency: 8.5; thrust: 400; cells: 3 }
+                    ListElement { text: "4s TMotor MN3510 50%T 15'"; weight: 100; efficiency: 13; thrust: 280; cells: 4 }
+                    ListElement { text: "4s TMotor MN3510 65%T 15'"; weight: 100; efficiency: 12; thrust: 500; cells: 4 }
+                    ListElement { text: "4s TMotor MN3510 70%T 15'"; weight: 100; efficiency: 11; thrust: 630; cells: 4 }
+                    ListElement { text: "4s TMotor MN3510 75%T 15'"; weight: 100; efficiency: 11; thrust: 760; cells: 4 }
+                    ListElement { text: "4s TMotor MN3510 85%T 15'"; weight: 100; efficiency: 10; thrust: 900; cells: 4 }
+                    ListElement { text: "5s TMotor MN3510 60%T 15'"; weight: 100; efficiency: 12; thrust: 630; cells: 5 }
+                    ListElement { text: "5s TMotor MN3510 55%T 15'"; weight: 100; efficiency: 12; thrust: 500; cells: 5 }
+                    ListElement { text: "6s TMotor MN3510 50%T 15'"; weight: 100; efficiency: 11; thrust: 780; cells: 6 }
+                    ListElement { text: "6s TMotor MN3510 50%T 14'"; weight: 100; efficiency: 11.5; thrust: 660; cells: 6 }
+                    ListElement { text: "8s TMotor MN3510 50%T 14'"; weight: 100; efficiency: 10; thrust: 800; cells: 8 }
+                    ListElement { text: "4s TMotor MN3510 75%T 15'"; weight: 100; efficiency: 11; thrust: 760; cells: 4 }
                     ListElement { text: "6s TMotor P80_340 50%T 22'"; weight: 400; efficiency: 8.0; thrust: 2800; cells: 6 }
                     ListElement { text: "12s TMotor P80_100 50%T 28'"; weight: 650; efficiency: 11; thrust: 3200; cells: 12 }
+                    ListElement { text: "12s sunnysky M8_100 40%T 26"; weight: 250; efficiency: 11.5; thrust: 1750; cells: 12 }
                     ListElement { text: "12s sunnysky X6215S 50%T 22"; weight: 350; efficiency: 7; thrust: 3800; cells: 12 }
-                    ListElement { text: "6s sunnysky X5212S 50%T 20"; weight: 260; efficiency: 9; thrust: 1800; cells: 6 }
+                    ListElement { text: "6s sunnysky X5212S_280 40%T 22"; weight: 260; efficiency: 10; thrust: 1500; cells: 6 }
+                    ListElement { text: "6s sunnysky X5212S_280 45%T 22"; weight: 260; efficiency: 9; thrust: 1800; cells: 6 }
+                    ListElement { text: "6s sunnysky X6212S_300 45%T 20"; weight: 308; efficiency: 8; thrust: 2000; cells: 6 }
+                    ListElement { text: "6s Antigravity 4006 KV380 60%T 1555"; weight: 68; efficiency: 9; thrust: 1000; cells: 6 }
+                    ListElement { text: "6s Antigravity 4006 KV380 50%T 1555"; weight: 68; efficiency: 10; thrust: 800; cells: 6 }
 
                     // one can add more motor configs here
                 }
@@ -117,7 +134,7 @@ ApplicationWindow {
                     ListElement { text: "NCR20700B"; capacity: 4250; capacity_det_at_max: 0.15; max_current: 15; weight: 65; cost: 10 }
                     ListElement { text: "NCR20700A"; capacity: 3300; capacity_det_at_max: 0.15; max_current: 30; weight: 65; cost: 11  }
                     ListElement { text: "SAMSUNG48G"; capacity: 4800; capacity_det_at_max: 0.15; max_current: 10; weight: 70 ; cost: 9 } // their max is 10 but cycles are reduced to about 200 at that, 500 at 5A taking middle ground
-                    ListElement { text: "SAMSUNG40T"; capacity: 3900; capacity_det_at_max: 0.15; max_current: 30; weight: 70; cost: 9 }
+                    ListElement { text: "SAMSUNG40T"; capacity: 3900; capacity_det_at_max: 0.15; max_current: 25; weight: 70; cost: 9 }
                     ListElement { text: "SAMSUNG30T"; capacity: 3000; capacity_det_at_max: 0.15; max_current: 35; weight: 70; cost: 9 }
                     ListElement { text: "SAMSUNG25R"; capacity: 2600; capacity_det_at_max: 0.15; max_current: 20; weight: 48; cost: 8 }
                     ListElement { text: "LG HG2";     capacity: 2900; capacity_det_at_max: 0.15; max_current: 20; weight: 52; cost: 9 }
