@@ -112,6 +112,8 @@ ApplicationWindow {
                     ListElement { text: "6s sunnysky X6212S_300 45%T 20"; weight: 308; efficiency: 8; thrust: 2000; cells: 6 }
                     ListElement { text: "6s Antigravity 4006 KV380 60%T 1555"; weight: 68; efficiency: 9; thrust: 1000; cells: 6 }
                     ListElement { text: "6s Antigravity 4006 KV380 50%T 1555"; weight: 68; efficiency: 10; thrust: 800; cells: 6 }
+                    ListElement { text: "6s Antigravity 4006 KV380 75%T 1555"; weight: 68; efficiency:7.5; thrust: 1560; cells: 6 }
+                    ListElement { text: "6s sunnysky 4004 KV400 70%T 1247"; weight: 51; efficiency: 6.5; thrust: 900; cells: 6 }
 
                     // one can add more motor configs here
                 }
